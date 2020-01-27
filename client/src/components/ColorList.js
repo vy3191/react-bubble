@@ -7,13 +7,18 @@ const ColorList = ({ colors, updateColors }) => {
   console.log(colors);
   const initialColor = { color: "", code: { hex: "" } };
   const [editing, setEditing] = useState(false);
+  const [addColorFlag, setAddColorFlag] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
 
   const editColor = color => {
     setEditing(!editing);
     setColorToEdit(color);
   };
-
+  
+  const toggleColorFlag = () => {
+     setAddColorFlag(!addColorFlag);
+     setColorToEdit(initialColor);
+  }
   const saveEdit = (e,id) => {
     
     e.preventDefault();
@@ -32,7 +37,8 @@ const ColorList = ({ colors, updateColors }) => {
                    })
                    .catch(err => {
                      console.log(err);
-                   })
+                   });
+                   
   };
 
   const deleteColor = (id) => {
@@ -46,6 +52,20 @@ const ColorList = ({ colors, updateColors }) => {
                       console.log(err);
                    })
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(colorToEdit)
+     axiosWithAuth().post('/api/colors', colorToEdit)
+                    .then( response => {
+                      console.log(response);
+                      updateColors([...response.data]);
+                      setColorToEdit(initialColor);
+                    })
+                    .catch(err => {
+                       console.log(err);
+                    });
+  }
 
   return (
     <div className="colors-wrap">
@@ -70,6 +90,9 @@ const ColorList = ({ colors, updateColors }) => {
           </li>
         ))}
       </ul>
+      <hr />
+      <p style={{cursor:'pointer'}} onClick={toggleColorFlag }>{!addColorFlag ? "Add a New Color" : "Cancle adding a color"}</p>
+      <hr/>
       {editing && (
         <form onSubmit={(e) => {saveEdit(e, colorToEdit.id)}}>
           <legend>edit color</legend>
@@ -100,8 +123,28 @@ const ColorList = ({ colors, updateColors }) => {
           </div>
         </form>
       )}
-      <div className="spacer" />
       {/* stretch - build another form here to add a color */}
+      {addColorFlag && (
+        <form onSubmit={handleSubmit}>
+          <legend>Add New Color</legend>
+          <label>
+            color name: <input onChange={e => setColorToEdit({ ...colorToEdit, color: e.target.value }) }
+                               value={colorToEdit.color}
+                        />
+          </label>
+          <label>
+            hex code: <input onChange={e =>  setColorToEdit({ ...colorToEdit,code: { hex: e.target.value } })}
+                             value={colorToEdit.code.hex}
+                      />
+          </label>
+          <div className="button-row">
+            <button type="submit">Add New Color</button>
+            <button onClick={() => toggleColorFlag(false)}>cancel</button>
+          </div>
+        </form>
+      )}
+      <div className="spacer" />
+      
     </div>
   );
 };
