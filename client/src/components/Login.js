@@ -1,9 +1,10 @@
 import React, {useState} from "react";
-import {token} from '../constants/localStorage'
+import {token} from '../constants/localStorage';
+import {withRouter} from 'react-router-dom';
 import axios from 'axios';
 import './Login.css';
 
-const Login = () => {
+const Login = (props) => {
   const defaultUser = {username:'', password:''};
   const [user,setUser] = useState(defaultUser);
 
@@ -21,12 +22,13 @@ const Login = () => {
              console.log(response);
              localStorage.setItem(token, response.data.payload);
              setUser(defaultUser);
+             props.history.push("/bubble-page");
           })
           .catch(err => {
             console.log(err);
           })
   }
-  console.log(user)
+  console.log('login props', props);
   return (
     <>                  
         <form onSubmit={handleSubmit}>
@@ -51,4 +53,4 @@ const Login = () => {
   );      
 };
 
-export default Login;
+export default withRouter(Login);

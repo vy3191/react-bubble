@@ -3,9 +3,9 @@ import axios from 'axios';
 
  export function axiosWithAuth() {
    return axios.create({
-      baseURL: 'http://localhost:5000/',
+      baseURL: 'http://localhost:5000',
       headers: {
-        authorization: token
+        authorization: localStorage.getItem(token)
       }
    })
 }
