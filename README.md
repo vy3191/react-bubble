@@ -38,7 +38,7 @@ Ans: I will make sure that user is Authenticated first, and then verify if the u
 Ans: A web server processes the incoming HTTP requests from the client and deliver an appropriate web pages to the client.
 
 - [X] Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
-Ans:- Create -> POST, Read -> GET, Update -> PUT, PATCH, and DELETE -> Remove
+Ans:- Create -> POST, Read -> GET, Update -> PUT, PATCH, and DELETE -> Delete
 
 
 ## Project Set Up
@@ -72,16 +72,16 @@ The MVP of this project will be broken up between 2 stages. Follow each step.
 
 Build a login form to authenticate your users.
 
-- [ ] Construct an AXIOS request to retrieve a token from the server. You'll use this token to interact with the API
-- [ ] Save the token to localStorage
-- [ ] Build a `axiosWithAuth` module to create an instance of axios with the authentication header
-- [ ] Build a `PrivateRoute` component and use it to protect a route that renders the `BubblesPage` component
+- [X] Construct an AXIOS request to retrieve a token from the server. You'll use this token to interact with the API
+- [X] Save the token to localStorage
+- [X] Build a `axiosWithAuth` module to create an instance of axios with the authentication header
+- [X] Build a `PrivateRoute` component and use it to protect a route that renders the `BubblesPage` component
 
 ### Stage 2 - Consuming the API
 
-- [ ] When `BubblePages` renders, make a GET request to fetch the color data for your bubbles.
-- [ ] In `ColorList.js`, complete the `saveEdit` and `deleteColor` functions to make AJAX requests to the API to edit/delete data
-- [ ] Watch and enjoy as your app responds to updates in the data. Check out `Bubbles.js` to see how this is built.
+- [X] When `BubblePages` renders, make a GET request to fetch the color data for your bubbles.
+- [X] In `ColorList.js`, complete the `saveEdit` and `deleteColor` functions to make AJAX requests to the API to edit/delete data
+- [X] Watch and enjoy as your app responds to updates in the data. Check out `Bubbles.js` to see how this is built.
 
 ### API Documentation
 
