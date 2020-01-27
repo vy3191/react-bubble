@@ -20,6 +20,7 @@ const Login = () => {
           .then( response => {
              console.log(response);
              localStorage.setItem(token, response.data.payload);
+             setUser(defaultUser);
           })
           .catch(err => {
             console.log(err);
