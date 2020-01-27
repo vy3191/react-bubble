@@ -17,10 +17,9 @@ const BubblePage = () => {
                     .catch( err => {
                       console.log(err);
                     })
-  })
+  },[]);
   return (
-    <>
-      <p>Welcome to bubble-page</p>
+    <>     
       <ColorList colors={colorList} updateColors={setColorList} />
       <Bubbles colors={colorList} />
     </>
