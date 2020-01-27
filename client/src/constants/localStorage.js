@@ -1,1 +1,1 @@
-export default const token = 'LOCAL_STORAGE_KEY';
+export const token = 'LOCAL_STORAGE_KEY';

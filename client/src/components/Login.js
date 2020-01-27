@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import token from '../constants/localStorage'
+import {token} from '../constants/localStorage'
 import axios from 'axios';
 import './Login.css';
 
@@ -19,6 +19,7 @@ const Login = () => {
      axios.post('http://localhost:5000/api/login', user)
           .then( response => {
              console.log(response);
+             localStorage.setItem(token, response.data.payload);
           })
           .catch(err => {
             console.log(err);
