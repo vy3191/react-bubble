@@ -56,6 +56,7 @@ const ColorList = ({ colors, updateColors }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(colorToEdit)
+     if(!colorToEdit.color || !colorToEdit.code.hex) return;
      axiosWithAuth().post('/api/colors', colorToEdit)
                     .then( response => {
                       console.log(response);
