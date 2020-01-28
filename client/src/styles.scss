@@ -32,7 +32,7 @@ body,
 
 .colors-wrap {
   height: 100%;
-  width: 300px;
+  width: 350px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 
   ul {
@@ -61,7 +61,7 @@ body,
 }
 
 form {
-  margin-top: 60px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
 
@@ -95,5 +95,6 @@ form {
     color: white;
     padding: 3px 8px;
     margin-top: 16px;
+    margin-right:7px;
   }
 }

@@ -1,0 +1,1 @@
+export const token = 'LOCAL_STORAGE_KEY';
