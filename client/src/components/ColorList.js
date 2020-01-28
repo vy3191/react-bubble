@@ -33,7 +33,10 @@ const ColorList = ({ colors, updateColors }) => {
                    .then(response => {
                       console.log(response);
                       setColorToEdit(response.data)
-                      updateColors([...updatedColors,colorToEdit]);
+                      if(response.status === 200) {
+                      updateColors([...updatedColors, response.data]);
+                      setEditing(!editing);
+                      }
                    })
                    .catch(err => {
                      console.log(err);
